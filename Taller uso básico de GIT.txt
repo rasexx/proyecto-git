@@ -1,0 +1,116 @@
+Taller uso básico de GIT
+
+INVESTIGACIÓN
+
+1. Qué es un Sistema de Control de Versiones (SCV) y para que sirve?
+2. DEfina: Repositorio, Working Copy/Working Set, Trunk/Main/Master
+3. Defina las siguientes opraciones de un SCV
+   - Add  - preparar los archivos para el commit
+   - Head
+   - Commits - que guarda los cambios en el repositorio
+   - Branching - versionamiento
+   - Merge
+4. Defina los tipos de SVC: CEntralizados y Dsitribuidos
+5. 
+
+CREAR UN PROYECTO
+
+1. En GITBASH: 
+   Creamos una carpeta donde colocar el código (dentro de la carpeta creada en la clase anterior)
+   
+   $ mkdir proyecto-git
+   $ cd proyecto-git
+
+2. En el bloc de notas:
+   Creamos un archivo y lo guardamos así, hola.php que muestre Hola Mundo. 
+
+   <?php
+   echo "Hola Mundo\n";
+
+3. En GITBASH: 
+   Crear el repositorio: Para crear un nuevo repositorio se usa la orden git init
+    
+    $ git init
+
+4. En GITBASH: 
+   Añadir la aplicación: Vamos a almacenar el archivo que hemos creado en el repositorio para  poder trabajar
+
+   $ git add hola.php
+   $ git commit -m "Creación del proyecto"
+
+5. En GITBASH:
+   Comprobar el estado del repositorio: Con la orden git status podemos ver en qué estado se encuentran los archivos de nuestro repositorio
+
+    $ git status
+
+6. En el archivo hola.php vamos a modigficar el código, así:
+   
+   <?php
+   @print "Hola {$argv[1]}\n"; 
+
+7. En GITBASH:
+   Volvemos a comprobar el estado del repositorio:
+
+   $ git status
+
+8. En GITBASH:
+   Añadir cambios: Con la orden git add indicamos a git que prepare loscambios para que    sean almacenados.
+
+   $ git add hola.php
+   $ git status
+
+9. En GITBASH: 
+   Confirmar los cambios: Con la orden git commit confirmamos los cambios definitivamente, lo que hace que se guarden permanentemente en nuestro repositorio.
+
+   $ git commit -m "Parametrización del programa"
+   $ git status
+
+10. En el archivo hola.php
+    Modificamos nuestra aplicación para que soporte un parámetro por defecto y añadimos los     cambios.
+
+<?php
+$nombre = isset($argv[1]) ? $argv[1] : "Mundo";
+@print "Hola, {$nombre}\n";
+
+11. En GITBASH
+
+    $git add hola.php
+
+12. En el archivo hola.php
+    Volvemos a modificar el programa para indicar con un comentario lo que hemos hecho.
+
+    <?php
+     // El nombre por defecto es Mundo
+     $nombre = isset($argv[1]) ? $argv[1] : "Mundo";
+     @print "Hola, {$nombre}\n";
+
+13. En GITBASH:
+    Vemos el estado en el que está el repositorio
+   
+    $ git status
+
+14. En GITBASH:
+    Almacenamos los cambios por separado:
+
+    $ git commit -m "Se añade un parámetro por defecto"
+    $ git status
+
+    $ git add .
+    $ git status
+
+    $ git commit -m "Se añade un comentario al cambio del valor por defecto"
+
+15. En GITBASH:
+    Observando los cambios: Con la orden git log podemos ver todos los cambios que hemos   hecho:
+
+    $ git log
+
+16. En GITBASH:
+    También es posible ver versiones abreviadas o limitadas, dependiendo de los parámetros
+
+    $ git log --oneline
+    $ git log --oneline --max-count=2
+    $ git log --oneline --since='5 minutes ago'
+    $ git log --oneline --until='5 minutes ago'
+    $ git log --oneline --author=sergio
+    $ git log --oneline --all
